@@ -1,10 +1,12 @@
-Flask-SocketIO-Chat
-===================
+# JBrowse Chat Server
 
-A simple chat application that demonstrates how to structure a Flask-SocketIO application.
+Provides the backend for coordinating JBrowse chat. Once you have a OAuth client id/secret, you can run with:
 
-To run this application install the requirements in a virtual environment, run `python chat.py` and visit `http://localhost:5000` on one or more browser tabs.
+```console
+$ GOOGLE_CLIENT_ID=... GOOGLE_CLIENT_SECRET=... python chat.py
+```
 
-If you prefer, you can also start the server using the Flask cli:
 
-    $ FLASK_APP=chat.py flask run
+## LICENSE
+
+AGPL-3.0
