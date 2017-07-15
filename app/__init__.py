@@ -10,9 +10,9 @@ def create_app(debug=False):
     """Create an application."""
     app = Flask(__name__)
     app.debug = debug
-    app.config['SECRET_KEY'] = '!6gjr39dkjn344_7#'
     app.config.update({
-        'SESSION_TYPE': 'filesystem'
+        'SESSION_TYPE': 'filesystem',
+        'SECRET_KEY': '!6gjr39dkjn344_7#'
     })
 
     Session(app)
