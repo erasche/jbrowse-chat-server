@@ -1,10 +1,10 @@
 from flask import Flask
 from flask_socketio import SocketIO
-from flask.ext.session import Session
+from flask_session import Session
+from flask_cors import CORS
 
 
 socketio = SocketIO()
-
 
 def create_app(debug=False):
     """Create an application."""
@@ -16,6 +16,12 @@ def create_app(debug=False):
     })
 
     Session(app)
+    CORS(app, resources={
+        r"/*": {
+            "origins": "*",
+            "supports_credentials": True
+        }
+    })
 
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
