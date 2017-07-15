@@ -33,5 +33,8 @@ def processMessage(orig, message=None):
     if 'loc' in orig:
         data['loc'] = orig['loc']
 
+    if 'tracks' in orig:
+        data['tracks'] = orig['tracks']
+
     return data
 

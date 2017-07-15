@@ -13,7 +13,9 @@ def joined(message):
     room = getRoom(message)
 
     join_room(room)
-    emit('status', processMessage({}, '/me has entered the room.'), room=room)
+    msg = processMessage({}, '/me has entered the room.')
+    print(msg)
+    emit('status', msg, room=room)
 
 @socketio.on('text', namespace='/chat')
 def text(message):
@@ -24,10 +26,11 @@ def text(message):
     room = getRoom(message)
 
     # Location messages are treated specially
+    msg = processMessage(message)
     if message['msg'].startswith('[location '):
-        emit('status', processMessage(message), room=room)
+        emit('status', msg, room=room)
     else:
-        emit('message', processMessage(message), room=room)
+        emit('message', msg, room=room)
 
 
 @socketio.on('left', namespace='/chat')
@@ -39,4 +42,6 @@ def left(message):
     room = getRoom(message)
 
     leave_room(room)
-    emit('status', processMessage(message, '/me has left the room.'), room=room)
+    msg = processMessage(message, '/me has left the room.')
+    print(msg)
+    emit('status', msg, room=room)
